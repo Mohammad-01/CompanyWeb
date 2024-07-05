@@ -1,0 +1,208 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CompanyWeb.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<style>
+    footer {
+        height: 40px;
+        background-color: #d6191f;
+        text-align: center;
+        line-height: 40px;
+        width: 80%;
+        position: relative;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-65%);
+        color: white;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar {
+        background-color: #f8f9fa;
+    }
+
+    .navbar-nav {
+        margin-left: auto;
+    }
+
+    .nav-link {
+        color: #343a40;
+    }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+</style>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - RJ</title>
+    <link rel="icon" href="~/Files/icon.png" type="image/x-icon" />
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+
+</head>
+
+<body>
+    <style>
+        body {
+        }
+
+        #NavigationMenu {
+            color: red;
+        }
+    </style>
+
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+
+            </Scripts>
+
+
+        </asp:ScriptManager>
+
+        <%--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="employeeDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employee
+                            </a>
+                            <div class="dropdown-menu" id="dvanc1" aria-labelledby="employeeDropdown">
+                                <a class="dropdown-item" href="#">Show Employee</a>
+                                <a class="dropdown-item" href="#">Add Employee</a>
+                                <a class="dropdown-item" href="#">Contact Information</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="departmentDropdown">
+                                <a class="dropdown-item" href="#">Show Department</a>
+                                <a class="dropdown-item" href="#">Add Department</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="sectionDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sectionDropdown">
+                                <a class="dropdown-item" href="#">Add Section</a>
+                                <a class="dropdown-item" href="#">Add Page</a>
+                                <a class="dropdown-item" href="#">Add User</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="mainDiv" runat="server"></div>
+                </div>
+            </div>
+        </nav>--%>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <asp:HyperLink ID="brandLink" runat="server" NavigateUrl="~/" CssClass="navbar-brand">Royale Jordanian</asp:HyperLink>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div id="mainDiv" runat="server"></div>
+                    <%--<ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="~/Default.aspx" CssClass="nav-link">Home</asp:HyperLink>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employee</a>
+                            <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                <asp:HyperLink ID="Emp" runat="server" NavigateUrl="~/Employee/Employee.aspx" CssClass="dropdown-item">Show Employee</asp:HyperLink>
+                                <asp:HyperLink ID="AddEmp" runat="server" NavigateUrl="~/Employee/AddEmployee.aspx" CssClass="dropdown-item">Add Employee</asp:HyperLink>
+                                <asp:HyperLink ID="Contact" runat="server" NavigateUrl="~/Employee/Contact.aspx" CssClass="dropdown-item">Contact</asp:HyperLink>
+                            </div>
+                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownContact" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Department
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownContact">
+                                <asp:HyperLink ID="Dept" runat="server" NavigateUrl="~/Department/DepartmentPage.aspx" CssClass="dropdown-item">Show Department</asp:HyperLink>
+                                <asp:HyperLink ID="AddDept" runat="server" NavigateUrl="~/Department/Department.aspx" CssClass="dropdown-item">Add Department</asp:HyperLink>
+                            </div>
+                        </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                <asp:HyperLink ID="sectionAdd" runat="server" NavigateUrl="~/SectionsSystem/Section.aspx" CssClass="dropdown-item">Add new section</asp:HyperLink>
+                                <asp:HyperLink ID="userAdd" runat="server" NavigateUrl="~/SectionsSystem/Users.aspx" CssClass="dropdown-item">Add new user</asp:HyperLink>
+                                <asp:HyperLink ID="pageAdd" runat="server" NavigateUrl="~/SectionsSystem/Pages.aspx" CssClass="dropdown-item">Add new page</asp:HyperLink>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>--%>
+
+                    <asp:Button runat="server" ID="RunBtn" class="btn-primary" Text="Logout" OnClick="btnLogout_Click" />
+                </div>
+            </div>
+
+            <asp:TextBox ID="WelcomeTex" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+
+        </nav>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>
+                    &copy; <%: DateTime.Now.Year %>
+                - RJ-RoyalJordanian
+            </footer>
+        </div>
+    </form>
+    <asp:PlaceHolder runat="server">
+        <%-- <%: Scripts.Render("~/bootstrap.min.js") %>--%>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    </asp:PlaceHolder>
+</body>
+</html>
